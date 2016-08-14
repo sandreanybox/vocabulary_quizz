@@ -5,7 +5,9 @@ const dictionariesList = ({dictionaries}) => (
     <ul>
       {dictionaries.map(dictionary => (
         <li key={dictionary._id}>
-          <a href={`/dictionaries/${dictionary._id}`}>{dictionary.langOrigin} // {dictionary.langLearn}</a>
+          <a href={`/dictionaries/${dictionary._id}`}>
+            {dictionary.langOrigin} // {dictionary.langLearn}
+          </a>
         </li>
       ))}
     </ul>

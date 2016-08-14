@@ -1,4 +1,4 @@
-import { configure } from '@kadira/storydictionary';
+import { configure } from '@kadira/storybook';
 import { disable } from 'react-komposer';
 
 disable();
