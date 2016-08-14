@@ -6,7 +6,7 @@ export default function () {
   Meteor.publish('dictionaries.list', function () {
     const selector = {};
     const options = {
-      fields: {_id: 1, langOrigin: 1, langLearn: 1},
+      fields: {_id: 1, name: 1, langOrigin: 1, langLearn: 1},
       sort: {createdAt: -1},
       limit: 10
     };

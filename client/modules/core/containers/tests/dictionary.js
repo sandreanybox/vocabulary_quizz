@@ -1,32 +1,32 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {stub, spy} from 'sinon';
-import {composer} from '../Dictionary';
+import {composer} from '../dictionary';
 
-describe('core.containers.Dictionary', () => {
+describe('core.containers.dictionary', () => {
   describe('composer', () => {
     const Tracker = {nonreactive: cb => cb()};
-    const getCollections = (Dictionary) => {
+    const getCollections = (dictionary) => {
       const Collections = {
         Dictionaries: {findOne: stub()}
       };
-      Collections.Dictionaries.findOne.returns(Dictionary);
+      Collections.Dictionaries.findOne.returns(dictionary);
       return Collections;
     };
 
-    it('should subscribe to the given DictionaryId via prop', () => {
+    it('should subscribe to the given dictionaryId via prop', () => {
       const Meteor = {subscribe: stub()};
       Meteor.subscribe.returns({ready: () => false});
       const Collections = getCollections();
 
       const context = () => ({Meteor, Tracker, Collections});
-      const DictionaryId = 'dwd';
+      const dictionaryId = 'dwd';
       const onData = spy();
 
-      composer({context, DictionaryId}, onData);
+      composer({context, dictionaryId}, onData);
       const args = Meteor.subscribe.args[0];
       expect(args.slice(0, 2)).to.deep.equal([
-        'dictionaries.single', DictionaryId
+        'dictionaries.single', dictionaryId
       ]);
     });
 
@@ -35,17 +35,17 @@ describe('core.containers.Dictionary', () => {
         it('should call onData with data', done => {
           const Meteor = {subscribe: stub()};
           Meteor.subscribe.returns({ready: () => false});
-          const Dictionary = {aa: 10};
-          const Collections = getCollections(Dictionary);
+          const dictionary = {aa: 10};
+          const Collections = getCollections(dictionary);
 
           const context = () => ({Meteor, Tracker, Collections});
-          const DictionaryId = 'dwd';
+          const dictionaryId = 'dwd';
           const onData = (err, data) => {
-            expect(data).to.be.deep.equal({Dictionary});
+            expect(data).to.be.deep.equal({dictionary});
             done();
           };
 
-          composer({context, DictionaryId}, onData);
+          composer({context, dictionaryId}, onData);
         });
       });
 
@@ -56,13 +56,13 @@ describe('core.containers.Dictionary', () => {
           const Collections = getCollections();
 
           const context = () => ({Meteor, Tracker, Collections});
-          const DictionaryId = 'dwd';
+          const dictionaryId = 'dwd';
           const onData = (err, data) => {
             expect(data).to.be.equal(undefined);
             done();
           };
 
-          composer({context, DictionaryId}, onData);
+          composer({context, dictionaryId}, onData);
         });
       });
     });
@@ -71,17 +71,17 @@ describe('core.containers.Dictionary', () => {
       it('should call onData with data', done => {
         const Meteor = {subscribe: stub()};
         Meteor.subscribe.returns({ready: () => true});
-        const Dictionary = {aa: 10};
-        const Collections = getCollections(Dictionary);
+        const dictionary = {aa: 10};
+        const Collections = getCollections(dictionary);
 
         const context = () => ({Meteor, Tracker, Collections});
-        const DictionaryId = 'dwd';
+        const dictionaryId = 'dwd';
         const onData = (err, data) => {
-          expect(data).to.be.deep.equal({Dictionary});
+          expect(data).to.be.deep.equal({dictionary});
           done();
         };
 
-        composer({context, DictionaryId}, onData);
+        composer({context, dictionaryId}, onData);
       });
     });
   });

@@ -4,15 +4,15 @@ import {shallow} from 'enzyme';
 import Dictionary from '../dictionary';
 
 describe('core.components.dictionary', () => {
-  it('should display the dictionary langOrigin', () => {
-    const dictionary = {langOrigin: 'Meditations'};
+  it('should display the dictionary name', () => {
+    const dictionary = {name: 'Animal'};
     const el = shallow(<Dictionary dictionary={dictionary} />);
-    expect(el.find('h2').text()).to.be.match(/Meditations/);
+    expect(el.find('h2').text()).to.be.match(/Animal/);
   });
 
-  it('should display the post langLearn', () => {
-    const dictionary = {langLearn: 'Marcus Aurelius'};
-    const el = shallow(<Post dictionary={dictionary} />);
-    expect(el.find('p').text()).to.be.match(/Nice content/);
+  it('should display the dictionary langOrigin and langLearn', () => {
+    const dictionary = {langOrigin: 'French', langLearn: 'Romanian'};
+    const el = shallow(<Dictionary dictionary={dictionary} />);
+    expect(el.find('span').text()).to.be.match(/French \/\/ Romanian/);
   });
 });

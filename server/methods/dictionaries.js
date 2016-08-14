@@ -4,13 +4,13 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.methods({
-    'dictionaries.create'(_id, langOrigin, langLearn) {
-      check(_id, String);
+    'dictionaries.create'(name, langOrigin, langLearn) {
+      check(name, String);
       check(langOrigin, String);
       check(langLearn, String);
 
       const createdAt = new Date();
-      const dictionary = {_id, langOrigin, langLearn, createdAt};
+      const dictionary = {name, langOrigin, langLearn, createdAt};
       Dictionaries.insert(dictionary);
     }
   });

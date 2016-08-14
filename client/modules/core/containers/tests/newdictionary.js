@@ -1,9 +1,9 @@
 const { describe, it } = global;
 import {expect} from 'chai';
 import {spy} from 'sinon';
-import {depsMapper} from '../newDictionary';
+import {depsMapper} from '../newdictionary';
 
-describe('core.containers.newDictionary', () => {
+describe('core.containers.newdictionary', () => {
   describe('depsMapper', () => {
     describe('actions', () => {
       it('should map dictionaries.create', () => {

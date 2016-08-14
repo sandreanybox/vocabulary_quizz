@@ -10,11 +10,11 @@ describe('core.actions.dictionaries', () => {
       const LocalState = {set: spy()};
       const FlowRouter = {go: spy()};
 
-      actions.create({Meteor, FlowRouter}, 't', 'a');
+      actions.create({Meteor, LocalState, FlowRouter}, 'u', 't', 'a');
       const methodArgs = Meteor.call.args[0];
 
       expect(methodArgs.slice(0, 4)).to.deep.equal([
-        'dictionaries.create', 'id', 't', 'a'
+        'dictionaries.create', 'u', 't', 'a'
       ]);
       expect(methodArgs[4]).to.be.a('function');
     });
@@ -26,8 +26,8 @@ describe('core.actions.dictionaries', () => {
       const FlowRouter = {go: spy()};
       Meteor.call.callsArg(4);
 
-      actions.create({Meteor, FlowRouter}, 't', 'a');
-      expect(FlowRouter.go.args[0][0]).to.be.equal(`/dictionaries/${id}`);
+      actions.create({Meteor, LocalState, FlowRouter}, 'u', 't', 'a');
+      expect(FlowRouter.go.args[0][0]).to.be.equal(`/`);
     });
   });
 });

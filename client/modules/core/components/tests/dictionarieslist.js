@@ -19,7 +19,7 @@ describe('core.components.dictionarieslist', () => {
     const lis = el.find('li');
     lis.forEach((li, index) => {
       const aText = li.find('a').first().text();
-      expect(aText).to.be.equal(dictionaries[index].langOrigin);
+      expect(aText).to.be.equal(': ' + dictionaries[index].langOrigin + ` // `);
     });
   });
 

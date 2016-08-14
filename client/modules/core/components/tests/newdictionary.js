@@ -6,20 +6,25 @@ import NewDictionary from '../newdictionary';
 describe('core.components.newdictionary', () => {
   it('should display the create dictionary form', () => {
     const el = shallow(<NewDictionary />);
-    const langOrigin = el.find('input').first();
-    const langLearn = el.find('input').second();
+    const inputs = el.find('input');
+    const name = inputs.get(0);
+    const langOrigin = inputs.get(1);
+    const langLearn = inputs.get(2);
     const form = el.find('form').first();
 
-    expect(langOrigin.node.ref).to.be.equal('langOrigin');
-    expect(langLearn.node.ref).to.be.equal('langLearn');
+    expect(name.ref).to.be.equal('name');
+    expect(langOrigin.ref).to.be.equal('langOrigin');
+    expect(langLearn.ref).to.be.equal('langLearn');
     expect(form.prop('onSubmit')).to.be.a('function');
   });
 
   it('should create a new dictionary when we click on the button', done => {
-    const langOrigin = 'Seeking Wisdom';
-    const langLearn = 'Peter Bevelin';
+    const name = 'Wisdom';
+    const langOrigin = 'French';
+    const langLearn = 'Romanian';
 
-    const onCreate = (t, a) => {
+    const onCreate = (u, t, a) => {
+      expect(u).to.be.equal(name);
       expect(t).to.be.equal(langOrigin);
       expect(a).to.be.equal(langLearn);
       done();
@@ -29,6 +34,7 @@ describe('core.components.newdictionary', () => {
     const instance = el.instance();
 
     instance.refs = {
+      name: {value: name},
       langOrigin: {value: langOrigin},
       langLearn: {value: langLearn}
     };

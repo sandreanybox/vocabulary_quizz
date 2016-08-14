@@ -8,7 +8,7 @@ class NewDictionary extends React.Component {
       <form className="new-dictionary" onSubmit={this.createDictionary.bind(this)}>
         <h2>Add New Dictionary</h2>
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
-
+        <input ref="name" type="text" placeholder="Dictionary name" /> <br/>
         <input ref="langOrigin" type="text" placeholder="Dictionary langOrigin" /> <br/>
         <input ref="langLearn" type="text" placeholder="Dictionary langLearn" /> <br/>
         <button type="submit">Add New Dictionary</button>
@@ -22,9 +22,9 @@ class NewDictionary extends React.Component {
     }
 
     const {create} = this.props;
-    const {langOrigin, langLearn} = this.refs;
+    const {name, langOrigin, langLearn} = this.refs;
 
-    create(langOrigin.value, langLearn.value);
+    create(name.value, langOrigin.value, langLearn.value);
   }
 }
 

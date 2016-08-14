@@ -2,7 +2,8 @@ import React from 'react';
 
 const Dictionary = ({dictionary}) => (
   <div>
-    <h2>{dictionary.langOrigin} // {dictionary.langLearn}</h2>
+    <h2>{dictionary.name}</h2>
+    <span>{dictionary.langOrigin} // {dictionary.langLearn}</span>
   </div>
 );
 
