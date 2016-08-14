@@ -10,7 +10,7 @@
     "storybook": "start-storybook -p 9001 -s ./public"
   },
   "devDependencies": {
-    "@kadira/storybook": "^1.7.0",
+    "@kadira/storybook": "^2.2.2",
     "babel-core": "6.x.x",
     "babel-plugin-react-require": "2.x.x",
     "babel-polyfill": "6.x.x",
@@ -20,10 +20,10 @@
     "babel-root-slash-import": "1.x.x",
     "chai": "3.x.x",
     "enzyme": "^2.2.0",
-    "eslint": "1.10.x",
-    "eslint-plugin-react": "3.15.x",
-    "jsdom": "^8.0.4",
-    "mocha": "2.x.x",
+    "eslint": "3.3.x",
+    "eslint-plugin-react": "6.1.x",
+    "jsdom": "^9.4.2",
+    "mocha": "3.x.x",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.0.0",
     "sinon": "1.17.x",
