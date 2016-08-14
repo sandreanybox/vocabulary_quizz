@@ -1,11 +1,11 @@
 const { describe, it } = global;
 import {expect} from 'chai';
 import {stub, spy} from 'sinon';
-import {composer} from '../bookslist';
+import {composer} from '../dictionarieslist';
 
-describe('core.containers.bookslist', () => {
+describe('core.containers.dictionarieslist', () => {
   describe('composer', () => {
-    it('should subscribe to books.list', () => {
+    it('should subscribe to dictionaries.list', () => {
       const Meteor = {subscribe: stub()};
       Meteor.subscribe.returns({ready: () => false});
 
@@ -14,7 +14,7 @@ describe('core.containers.bookslist', () => {
 
       composer({context}, onData);
       expect(Meteor.subscribe.args[0]).to.deep.equal([
-        'books.list'
+        'dictionaries.list'
       ]);
     });
 
@@ -23,15 +23,15 @@ describe('core.containers.bookslist', () => {
         const Meteor = {subscribe: stub()};
         Meteor.subscribe.returns({ready: () => true});
 
-        const books = [ {_id: 'aa'} ];
-        const Collections = {Books: {find: stub()}};
-        Collections.Books.find.returns({fetch: () => books});
+        const dictionaries = [ {_id: 'aa'} ];
+        const Collections = {Dictionaries: {find: stub()}};
+        Collections.Dictionaries.find.returns({fetch: () => dictionaries});
 
         const context = () => ({Meteor, Collections});
         const onData = spy();
 
         composer({context}, onData);
-        expect(onData.args[0]).to.deep.equal([ null, {books} ]);
+        expect(onData.args[0]).to.deep.equal([ null, {dictionaries} ]);
       });
     });
   });

@@ -1,9 +1,9 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {spy, stub} from 'sinon';
-import actions from '../books';
+import actions from '../dictionaries';
 
-describe('core.actions.books', () => {
+describe('core.actions.dictionaries', () => {
   describe('create', () => {
     it('should call Meteor.call to save the post', () => {
       const Meteor = {uuid: () => 'id', call: spy()};
@@ -14,7 +14,7 @@ describe('core.actions.books', () => {
       const methodArgs = Meteor.call.args[0];
 
       expect(methodArgs.slice(0, 4)).to.deep.equal([
-        'books.create', 'id', 't', 'a'
+        'dictionaries.create', 'id', 't', 'a'
       ]);
       expect(methodArgs[4]).to.be.a('function');
     });
@@ -27,7 +27,7 @@ describe('core.actions.books', () => {
       Meteor.call.callsArg(4);
 
       actions.create({Meteor, FlowRouter}, 't', 'a');
-      expect(FlowRouter.go.args[0][0]).to.be.equal(`/books/${id}`);
+      expect(FlowRouter.go.args[0][0]).to.be.equal(`/dictionaries/${id}`);
     });
   });
 });

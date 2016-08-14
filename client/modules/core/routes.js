@@ -2,36 +2,36 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from './components/main_layout';
-import BooksList from './containers/bookslist';
-import Book from './containers/book';
-import NewBook from './containers/newbook';
+import DictionariesList from './containers/dictionarieslist';
+import Dictionary from './containers/dictionary';
+import NewDictionary from './containers/newdictionary';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
 
   FlowRouter.route('/', {
-    name: 'books.list',
+    name: 'dictionaries.list',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<BooksList />)
+        content: () => (<DictionariesList />)
       });
     }
   });
 
-  FlowRouter.route('/books/:bookId', {
-    name: 'books.single',
-    action({bookId}) {
+  FlowRouter.route('/dictionaries/:dictionaryId', {
+    name: 'dictionaries.single',
+    action({dictionaryId}) {
       mount(MainLayoutCtx, {
-        content: () => (<Book bookId={bookId}/>)
+        content: () => (<Dictionary dictionaryId={dictionaryId}/>)
       });
     }
   });
 
-  FlowRouter.route('/new-book', {
-    name: 'newbook',
+  FlowRouter.route('/new-dictionary', {
+    name: 'newdictionary',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<NewBook />)
+        content: () => (<NewDictionary />)
       });
     }
   });

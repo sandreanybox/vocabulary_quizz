@@ -2,8 +2,8 @@ import React from 'react';
 
 const Navigation = () => (
   <div>
-    <a href="/">Books</a> |
-    <a href="/new-book">New Book</a>
+    <a href="/">Dictionaries</a> |
+    <a href="/new-dictionary">New Dictionary</a>
   </div>
 );
 

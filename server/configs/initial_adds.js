@@ -1,11 +1,11 @@
-import {Books} from '/lib/collections';
+import {Dictionaries} from '/lib/collections';
 
 export default function () {
-  if (!Books.findOne()) {
+  if (!Dictionaries.findOne()) {
     for (let i = 1; i <= 5; i++) {
-      const title = `Book #${i}`;
-      const author = `Author #${i}`;
-      Books.insert({title, author});
+      const langLearn = `Français #${i}`;
+      const langOrigin = `Roumain #${i}`;
+      Dictionaries.insert({langLearn, langOrigin});
     }
   }
 }

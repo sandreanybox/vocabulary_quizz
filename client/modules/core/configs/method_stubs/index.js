@@ -1,5 +1,5 @@
-import books from './books';
+import dictionaries from './dictionaries';
 
 export default function (context) {
-  books(context);
+  dictionaries(context);
 }

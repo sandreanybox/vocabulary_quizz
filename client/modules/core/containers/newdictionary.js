@@ -1,4 +1,4 @@
-import NewBook from '../components/newbook';
+import NewDictionary from '../components/newdictionary';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 
 export const composer = ({context, clearErrors}, onData) => {
@@ -11,12 +11,12 @@ export const composer = ({context, clearErrors}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  create: actions.books.create,
-  clearErrors: actions.books.clearErrors,
+  create: actions.dictionaries.create,
+  clearErrors: actions.dictionaries.clearErrors,
   context: () => context
 });
 
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(NewBook);
+)(NewDictionary);
