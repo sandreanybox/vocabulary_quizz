@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import {Input, Button, FormGroup, FormControl} from 'react-bootstrap';
 
 class NewDictionary extends React.Component {
   render() {
@@ -8,10 +10,30 @@ class NewDictionary extends React.Component {
       <form className="new-dictionary" onSubmit={this.createDictionary.bind(this)}>
         <h2>Add New Dictionary</h2>
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
-        <input ref="name" type="text" placeholder="Dictionary name" /> <br/>
-        <input ref="langOrigin" type="text" placeholder="Dictionary langOrigin" /> <br/>
-        <input ref="langLearn" type="text" placeholder="Dictionary langLearn" /> <br/>
-        <button type="submit">Add New Dictionary</button>
+        <FormGroup controlId="FormName">
+          <FormControl
+              ref="name"
+              type="text"
+              placeholder="Enter name"
+          />
+        </FormGroup>
+        <FormGroup controlId="FormlangOrigin">
+          <FormControl
+              ref="langOrigin"
+              type="text"
+              placeholder="Enter langOrigin"
+          />
+        </FormGroup>
+        <FormGroup controlId="FormlangLearn">
+          <FormControl
+              ref="langLearn"
+              type="text"
+              placeholder="Enter langLearn"
+          />
+        </FormGroup>
+        <FormGroup>
+        <Button type="submit">Add New Dictionary</Button>
+        </FormGroup>
       </form>
     );
   }
@@ -22,9 +44,11 @@ class NewDictionary extends React.Component {
     }
 
     const {create} = this.props;
-    const {name, langOrigin, langLearn} = this.refs;
 
-    create(name.value, langOrigin.value, langLearn.value);
+    const langOrigin = ReactDOM.findDOMNode(this.refs.langOrigin).value.trim();
+    const langLearn = ReactDOM.findDOMNode(this.refs.langLearn).value.trim();
+    const name = ReactDOM.findDOMNode(this.refs.name).value.trim();
+    create(name, langOrigin, langLearn);
   }
 }
 

@@ -22,3 +22,5 @@ check@1.2.3
 random@1.0.10
 standard-minifier-css
 standard-minifier-js
+kadira:dochead
+twbs:bootstrap
